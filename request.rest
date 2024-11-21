@@ -2,6 +2,31 @@
 
 GET http://localhost:3000/posts
 
+
+###
+
+GET http://localhost:3000/posts/673fb462bc29fa07fa279ab0
+
+###
+
+GET http://localhost:3000/posts?owner=Noam2
+
+
 ###
 
 POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "owner": "Noam2",
+    "title": "My second post",
+    "content": "This is my second post"
+}
+
+
+###
+
+DELETE  http://localhost:3000/posts/12345678
+
+
+

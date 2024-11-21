@@ -5,6 +5,10 @@ const Post = require("../controllers/post");
 
 router.get("/", Post.getAllPosts);
 
-router.post("/", Post.getAllPosts);
+router.get("/:id", Post.getPostById);
+
+router.post("/", Post.createPost);
+
+router.delete("/:id", Post.deletePost);
 
 module.exports = router;
