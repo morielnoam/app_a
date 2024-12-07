@@ -1,4 +1,5 @@
 const Posts = require("../models/posts_model");
+const { post } = require("../server");
 const getAllPosts = async (req, res) => {
     const filter = req.query;
     console.log(filter);
@@ -42,9 +43,14 @@ const createPost = async (req, res) => {
     }
 };
 
-const deletePost = (req, res) => {
-    console.log("Posts delete service");
-    res.send("Posts delete service");
+const deletePost = async (req, res) => {
+    const postId = req.params.id;
+    try {
+        await Posts.findByIdAndDelete(postId);
+        res.status(200).send();
+    } catch (error) {
+        res.status(400).send(error);
+    }
 };
 
 module.exports = {getAllPosts, getPostById, createPost, deletePost};
